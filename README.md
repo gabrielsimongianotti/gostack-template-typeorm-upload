@@ -179,3 +179,12 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ---
 
 Feito com 💜 by Rocketseat :wave: [Entre na nossa comunidade!](https://discordapp.com/invite/gCRAFhc)
+
+##  :memo:comandos do docker
+```json
+
+docker run --name desafio -e POSTGRES_PASSWORD=docker -e POSTGRES_USER=postgres -e POSTGRES_DB=gostack_desafio06 -p 5432:5432 -d postgres
+
+yarn typeorm migration:run
+
+```
