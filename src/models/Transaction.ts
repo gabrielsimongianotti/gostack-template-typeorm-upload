@@ -1,10 +1,17 @@
-import { uuid } from 'uuidv4';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, JoinColumn, UpdateDateColumn } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import Category from './Category';
 
-import Category from "./Category"
-@Entity("transactions")
+@Entity('transactions')
 class Transaction {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
@@ -13,13 +20,15 @@ class Transaction {
   @Column()
   type: 'income' | 'outcome';
 
-  @Column("float8")
+  @Column()
   value: number;
 
-
-  @ManyToOne(() => Category)
-  @JoinColumn({ name: "category_id" })
+  @Column()
   category_id: string;
+
+  @ManyToOne(() => Category, category => category.transaction, { eager: true })
+  @JoinColumn({ name: 'category_id' })
+  category: Category;
 
   @CreateDateColumn()
   created_at: Date;
