@@ -75,10 +75,10 @@ class ImportTransactionsService {
         title: transaction.title,
         type: transaction.type,
         value: transaction.value,
-        categories: finishCategories.find(category => category.title === transaction.category)
+        category: finishCategories.find(category => category.title === transaction.category)
       }))
     )
-    const save =await transactionsRepository.save(createdTransactions)
+    const save = await transactionsRepository.save(createdTransactions)
 
     return save;
   }
